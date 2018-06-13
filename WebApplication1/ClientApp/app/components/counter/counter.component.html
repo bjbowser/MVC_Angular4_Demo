@@ -1,0 +1,26 @@
+<h1>Issue Tracker - View/Close Tickets</h1>
+<div class="headerline"></div>
+
+<form name="list">
+    <label class="container">View Closed<input type="checkbox" (click)="showClosed()"><span class="checkmark"></span></label>
+    <table>
+        <tr>
+            <th width="10%"></th>
+            <th>Added</th>
+            <th>Type</th>
+            <th>Details</th>
+            <th>Recieved</th>
+            <th>Wanted</th>
+        </tr>
+        <ng-container *ngFor="let ticket of tickets">
+            <tr *ngIf="ticket.active == !isClosed">
+                <td>#{{ticket.issueID}} <a *ngIf="ticket.active" (click)="closeticket($event)" id="{{ ticket.issueID }}">Close</a></td>
+                <td>{{ ticket.dateAdded | date : "MM/dd/y" }}</td>
+                <td>{{ ticket.type.issueDescription }}</td>
+                <td>{{ ticket.issueText }}</td>
+                <td>{{ ticket.textRecieved }}</td>
+                <td>{{ ticket.textWanted }}</td>
+            </tr>
+        </ng-container>
+    </table>
+</form>

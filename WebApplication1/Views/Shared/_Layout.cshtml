@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <base href="~/" />
+
+    <link rel="stylesheet" href="~/dist/vendor.css" asp-append-version="true" />
+    <style>
+        table, th, tr, td {
+            padding: 10px;
+        }
+        .extra td:first-child {
+            padding-left: 50px;
+            padding-right: 0;
+        }
+        .headerline {
+            width: 98%;
+            min-height: 5px;
+            background-color: #aad5d5;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .btn-primary {
+            background: #448a8a;
+            color: #fff;
+        }
+        .btn-primary:hover, .btn-primary:focus {
+            background: #aad5d5;
+            cursor: pointer;
+        }
+        .btn-primary:active, .btn-primary.active {
+            background: #448a8a;
+            box-shadow: none;
+        }
+        .btn-primary[disabled], btn-primary[disabled]:hover {
+            background: #ccc !important;
+            box-shadow: none !important;
+            border-color: #ccc !important;
+            cursor: default;
+        }
+        .container {
+            display: block;
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #eee;
+        }
+        .container:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+        .container input:checked ~ .checkmark {
+            background-color: #aad5d5;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .container input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .container .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(40deg);
+            -ms-transform: rotate(40deg);
+            transform: rotate(40deg);
+        }
+        a { color: #448a8a; }
+        a:hover {
+            cursor: pointer;
+            color: #aad5d5;
+        }
+    </style>
+</head>
+<body>
+    @RenderBody()
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

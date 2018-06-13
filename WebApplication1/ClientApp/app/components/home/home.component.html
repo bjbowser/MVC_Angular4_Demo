@@ -1,0 +1,43 @@
+﻿<div>
+    <h1>Issue Tracker - Add a Ticket</h1>
+    <div class="headerline"></div><p></p>
+
+    <form #issueForm="ngForm" ngNativeValidate>
+        <table *ngIf="types">
+            <tr *ngIf="issueAdded">
+                <th><label>New Issue:</label></th>
+                <td><input name="issue.issueID" [(ngModel)]="issue.issueID" disabled="disabled" /></td>
+            </tr>
+            <tr>
+                <th><label for="dateAdded">Date Added:</label></th>
+                <td><input name="issue.dateAdded" [(ngModel)]="issue.dateAdded" disabled="disabled" />
+                    <button type="button"  (click)="addnewissue()" class="btn-primary"
+                            [disabled]="!issueForm.form.valid || issueAdded">Add Issue</button></td>
+            </tr>
+            <tr>
+                <th><label for="issuetype">Type of Issue: </label></th>
+                <td>
+                    <select (change)="choseOption($event)" >
+                        <option *ngFor="let type of types" label="{{type.issueName}}" [ngValue]="type" value="{{type.issueTypeID}}">
+                            {{type.issueDescription}}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="issueDesc">Description: </label></th>
+                <td><textarea [(ngModel)]="issue.issueDesc" name="issue.issueDesc" cols="50" style="color:#000" [required]="true"></textarea>
+                </td>
+            </tr>
+            <tr class="headerline" *ngIf="isError">
+                <th colspan="2">** Provide extra information when possible **</th>
+            <tr class="extra" *ngIf="isError">
+                <td><label for="Recieved">What happened:</label></td>
+                <td><textarea name="issue.Recieved" [(ngModel)]="issue.Recieved"></textarea></td>
+            </tr>
+            <tr class="extra" *ngIf="isError">
+                <td><label for="Wanted">What was wanted:</label></td>
+                <td><textarea name="issue.Wanted" [(ngModel)]="issue.Wanted"></textarea></td>
+            </tr>
+        </table>
+    </form>
+</div>
